@@ -54,9 +54,7 @@
         \hline
 	    Name & Date & Reason For Changes & Version\\
         \hline
-	    21 & 22 & 23 & 24\\
-        \hline
-	    31 & 32 & 33 & 34\\
+	    Rough Draught & 2016 02 08 & Initial SRS & .01\\
         \hline
     \end{tabular}
 \end{center}
@@ -64,6 +62,8 @@
 \chapter{Introduction}
 
 \section{Purpose}
+The purpose of Event! is to 
+
 $<$Identify the product whose software requirements are specified in this 
 document, including the revision or release number. Describe the scope of the 
 product that is covered by this SRS, particularly if this SRS describes only 
@@ -145,11 +145,6 @@ operations; language requirements; communications protocols; security
 considerations; design conventions or programming standards (for example, if the 
 customer’s organization will be responsible for maintaining the delivered 
 software).$>$
-
-\section{User Documentation}
-$<$List the user documentation components (such as user manuals, on-line help, 
-and tutorials) that will be delivered along with the software. Identify any 
-known user documentation delivery formats or standards.$>$
 
 \section{Assumptions and Dependencies}
 The app is dependent on a database back end for pulling events and updating 
@@ -263,19 +258,10 @@ database. A simple wifi or 2G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
 \section{Safety Requirements}
-$<$Specify those requirements that are concerned with possible loss, damage, or 
-harm that could result from the use of the product. Define any safeguards or 
-actions that must be taken, as well as actions that must be prevented. Refer to 
-any external policies or regulations that state safety issues that affect the 
-product’s design or use. Define any safety certifications that must be 
-satisfied.$>$
+Setting up user data handling is still in research.
 
 \section{Security Requirements}
-$<$Specify any requirements regarding security or privacy issues surrounding use 
-of the product or protection of the data used or created by the product. Define 
-any user identity authentication requirements. Refer to any external policies or 
-regulations containing security issues that affect the product. Define any 
-security or privacy certifications that must be satisfied.$>$
+Network security is still in research.
 
 \section{Software Quality Attributes}
 The software is built to be extensible. It can be extended to almost any event at
@@ -351,22 +337,5 @@ the javadoc standards. They should contain a description of the Class and its in
 \texttt{* \\}
 \texttt{*/}
 \texttt{public class ClassName \{\}}
-
-
-\section{Appendix A: Glossary}
-%see https://en.wikibooks.org/wiki/LaTeX/Glossary
-$<$Define all the terms necessary to properly interpret the SRS, including 
-acronyms and abbreviations. You may wish to build a separate glossary that spans 
-multiple projects or the entire organization, and just include terms specific to 
-a single project in each SRS.$>$
-
-\section{Appendix B: Analysis Models}
-$<$Optionally, include any pertinent analysis models, such as data flow 
-diagrams, class diagrams, state-transition diagrams, or entity-relationship 
-diagrams.$>$
-
-\section{Appendix C: To Be Determined List}
-$<$Collect a numbered list of the TBD (to be determined) references that remain 
-in the SRS so they can be tracked to closure.$>$
 
 \end{document}
