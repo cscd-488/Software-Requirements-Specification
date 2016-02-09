@@ -17,7 +17,7 @@
     urlcolor=purple,                                % color of external links
     linktoc=page                                    % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{0.1 }
 \date{}
 %\title{%
 
@@ -112,17 +112,6 @@ mobile phones, but it can also be run on Android tablets, although the screen
 sizes are not spesifically supported. The phones/tablets must have a rear facing 
 camera to be able to utilize the QR code check in feature.
 
-\section{Design and Implementation Constraints}
-
-$<$Describe any items or issues that will limit the options available to the 
-developers. These might include: corporate or regulatory policies; hardware 
-limitations (timing requirements, memory requirements); interfaces to other 
-applications; specific technologies, tools, and databases to be used; parallel 
-operations; language requirements; communications protocols; security 
-considerations; design conventions or programming standards (for example, if the 
-customer’s organization will be responsible for maintaining the delivered 
-software).$>$
-
 \section{Assumptions and Dependencies}
 The app is dependent on a database back end for pulling events and updating 
 content. Without the back end it will be incapable of pulling event data and 
@@ -157,7 +146,7 @@ information and user information.
 \section{Communications Interfaces}
 Event! will communicate with the server via HTTPS connections, for getting event 
 data, and storing user data. \\
-Event will also communicate with social media outlets Google (for user authentication), 
+The app will also communicate with social media outlets Google (for user authentication), 
 and Google+, Facebook, Twitter, and Instagram for social media sharing via the 
 APIs provided by the companies.
 
@@ -179,7 +168,8 @@ After viewing the tutorial the user will be prompted to login with their Google 
 They will be able to click a single button and authorize the app.
 
 \subsection{Functional Requirements}
-Database back end for storing user login information.
+Database back end for storing user login information. Users must posess a Google 
+account, and should have one because it is required for an Android phone.
 
 \section{System Feature 2 : Events}
 
@@ -195,7 +185,7 @@ local database with events.
 \subsection{Functional Requirements}
 Database back end for pulling event data.
 
-\section{System Feature 3 : Checkin}
+\section{System Feature 3 : Check-In}
 
 \subsection{Description and Priority}
 User checkin is a core feature of the app. Users will be allowed to check in to event waypoints
@@ -204,19 +194,19 @@ by using GPS location and QR code scans.
 \subsection{Stimulus/Response Sequences}
 User will select an event and be presented with a list of event waypoints. User will then
 select a single waypoint which they wish to check in to. They will press a button and either
-be checked in via GPS or a Camera will be shown which they can use to scan a QR code. \\
+be checked in via GPS, or a Camera will be shown which they can use to scan a QR code. \\
 If GPS is disabled, user will be prompted to allow access. \\
 If Camera is busy, user will be notified.
 
 \subsection{Functional Requirements}
 GPS connectivity \\
-Camera and ZXing API for QR code scanning.
+Camera hardware and ZXing API for QR code scanning.
 
-\section{System Feature 4 : Badges}
-One key feature of the app is the collection of badges. These badges, when collected,
-can be used to redeem some item of nominal value from a vendor/booth, such as a 
-cup of coffee, for visiting all waypoints. The app will allow for the viewing of collected 
-badges, as well as a way of signifying when a badge or set of badges has been redeemed.
+\section{System Feature 4 : Redeeming Badges}
+One key feature of the app is redeeming the collected badges for some item of nominal value from
+a vendor/booth, such as a cup of coffee, for visiting all waypoints at an event. The app will allow
+for the viewing of collected badges, as well as a way of signifying when a badge or set of badges
+has been redeemed.
 
 \subsection{Stimulus/Response Sequences}
 User will present phone to vendor. Vendor will be able to scan screen, or otherwise 
@@ -235,10 +225,14 @@ database. A simple wifi or 2G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
 \section{Safety Requirements}
-Setting up user data handling is still in research.
+
 
 \section{Security Requirements}
-Network security is still in research.
+Users data will be transfered via HTTPS secure connections. Users will be logged in
+with a unique secure token created by Google's authentication services, which will
+be stored on the apps private server space. As a whole, the app's function will 
+not require much security as there will not be much value associated with the data,
+so HTTPS connections should be sufficient. 
 
 \section{Software Quality Attributes}
 The software is built to be extensible. It can be extended to almost any event at
@@ -280,6 +274,7 @@ contains but is not limited to
 \texttt{* @file FileName.java \\}
 \texttt{* @author FirstName LastName\\}
 \texttt{* @date 2016 01 15 \\}
+\texttt{* @author EditorFitrstName EditorLastName\\}
 \texttt{* @date 2016 02 08\\}
 \texttt{* This short description is intended to fulfill the requirements of an SRS. \\}
 \texttt{*/ \\}
@@ -292,7 +287,7 @@ the javadoc standards. They should contain a description of the Class and its in
 \texttt{/** \\}
 \texttt{* Class Description used to show the proper documentation \\}
 \texttt{* of a class \\}
-\texttt{*/}
+\texttt{*/ \\}
 \texttt{public class ClassName \{\}}
 
 \begin{itemize}
@@ -307,12 +302,12 @@ the javadoc standards. They should contain a description of the Class and its in
 \texttt{* Method description describing the basic features \\}
 \texttt{* and function of method\\}
 \texttt{* \\}
-\texttt{* @param paramName This parameter is useful because it shows param notation in comments \\}
-\texttt{* @param param2 This shows the second parameter \\}
+\texttt{* @param paramName This holds the name of the parameter \\}
+\texttt{* @param param2 This is the descriptiion of the second parameter \\}
 \texttt{* \\}
 \texttt{* @return This is the description of the return value\\}
 \texttt{* \\}
-\texttt{*/}
+\texttt{*/ \\}
 \texttt{public class ClassName \{\}}
 
 \end{document}
