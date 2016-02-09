@@ -101,6 +101,7 @@ including title, author, version number, date, and source or location.$>$
 \chapter{Overall Description}
 
 \section{Product Perspective}
+The Event app is a stand alone self contained product
 $<$Describe the context and origin of the product being specified in this SRS.  
 For example, state whether this product is a follow-on member of a product 
 family, a replacement for certain existing systems, or a new, self-contained 
@@ -111,28 +112,31 @@ components of the overall system, subsystem interconnections, and external
 interfaces can be helpful.$>$
 
 \section{Product Functions}
-$<$Summarize the major functions the product must perform or must let the user 
-perform. Details will be provided in Section 3, so only a high level summary 
-(such as a bullet list) is needed here. Organize the functions to make them 
-understandable to any reader of the SRS. A picture of the major groups of 
-related requirements and how they relate, such as a top level data flow diagram 
-or object class diagram, is often effective.$>$
+Event! is intended to allow users to find interesting locations, to influence them 
+to visit those locations, to share the experience with friends, and collect badges 
+which they can redeem for some nominal reward. Because of this, we have the 
+following functions: 
+\begin{itemize}
+\item User authentication
+\item GPS and QR location check in
+\item Social media hooks for sharing events/waypoints
+\end{itemize}
+With these features, users will be allowed to log in to the app, view events, 
+view waypoints, share events and waypoints via social media, and collect 
+badges at waypoints via GPS and QR.
 
 \section{User Classes and Characteristics}
-$<$Identify the various user classes that you anticipate will use this product.  
-User classes may be differentiated based on frequency of use, subset of product 
-functions used, technical expertise, security or privilege levels, educational 
-level, or experience. Describe the pertinent characteristics of each user class.  
-Certain requirements may pertain only to certain user classes. Distinguish the 
-most important user classes for this product from those who are less important 
-to satisfy.$>$
+Event! appeals to all age ranges, with emphasis on the young who will be visiting 
+events, art walks, and the like.
 
 \section{Operating Environment}
-$<$Describe the environment in which the software will operate, including the 
-hardware platform, operating system and versions, and any other software 
-components or applications with which it must peacefully coexist.$>$
+Event! will run on Android API 16 and newer android devices. It is designed for 
+mobile phones, but it can also be run on Android tablets, although the screen 
+sizes are not spesifically supported. The phones/tablets must have a rear facing 
+camera to be able to utilize the QR code check in feature.
 
 \section{Design and Implementation Constraints}
+
 $<$Describe any items or issues that will limit the options available to the 
 developers. These might include: corporate or regulatory policies; hardware 
 limitations (timing requirements, memory requirements); interfaces to other 
@@ -146,57 +150,44 @@ software).$>$
 $<$List the user documentation components (such as user manuals, on-line help, 
 and tutorials) that will be delivered along with the software. Identify any 
 known user documentation delivery formats or standards.$>$
-\section{Assumptions and Dependencies}
 
-$<$List any assumed factors (as opposed to known facts) that could affect the 
-requirements stated in the SRS. These could include third-party or commercial 
-components that you plan to use, issues around the development or operating 
-environment, or constraints. The project could be affected if these assumptions 
-are incorrect, are not shared, or change. Also identify any dependencies the 
-project has on external factors, such as software components that you intend to 
-reuse from another project, unless they are already documented elsewhere (for 
-example, in the vision and scope document or the project plan).$>$
+\section{Assumptions and Dependencies}
+The app is dependent on a database back end for pulling events and updating 
+content. Without the back end it will be incapable of pulling event data and 
+providing the user with information.
 
 
 \chapter{External Interface Requirements}
 
 \section{User Interfaces}
-$<$Describe the logical characteristics of each interface between the software 
-product and the users. This may include sample screen images, any GUI standards 
-or product family style guides that are to be followed, screen layout 
-constraints, standard buttons and functions (e.g., help) that will appear on 
-every screen, keyboard shortcuts, error message display standards, and so on.  
-Define the software components for which a user interface is needed. Details of 
-the user interface design should be documented in a separate user interface 
-specification.$>$
+
+The user interface will be built with Android XML layouts. It will feature
+\begin{itemize}
+\item Paging introduction view
+\item Navigation drawer
+\item Login screen
+\item Event view screen
+\item Waypoint view screen
+\item QR code scanner screen
+\end{itemize}
 
 \section{Hardware Interfaces}
-$<$Describe the logical and physical characteristics of each interface between 
-the software product and the hardware components of the system. This may include 
-the supported device types, the nature of the data and control interactions 
-between the software and the hardware, and communication protocols to be 
-used.$>$
+Each device must have a rear-facing camera capable of producing JPEG photos, 
+and auto focus. This will be used by the QR code scanner for event waypoint checkin.
+Event! will also use network to send and recieve information from a server.
 
 \section{Software Interfaces}
-$<$Describe the connections between this product and other specific software 
-components (name and version), including databases, operating systems, tools, 
-libraries, and integrated commercial components. Identify the data items or 
-messages coming into the system and going out and describe the purpose of each.  
-Describe the services needed and the nature of communications. Refer to 
-documents that describe detailed application programming interface protocols.  
-Identify data that will be shared across software components. If the data 
-sharing mechanism must be implemented in a specific way (for example, use of a 
-global data area in a multitasking operating system), specify this as an 
-implementation constraint.$>$
+Event! will use ZXing QR code scanner API for decoding and creating QR codes for 
+event and waypoint checkin. \\
+Event! will use Apache server with PHP and MySQL database for maintaining event 
+information and user information.
 
 \section{Communications Interfaces}
-$<$Describe the requirements associated with any communications functions 
-required by this product, including e-mail, web browser, network server 
-communications protocols, electronic forms, and so on. Define any pertinent 
-message formatting. Identify any communication standards that will be used, such 
-as FTP or HTTP. Specify any communication security or encryption issues, data 
-transfer rates, and synchronization mechanisms.$>$
-
+Event! will communicate with the server via HTTPS connections, for getting event 
+data, and storing user data. \\
+Event will also communicate with social media outlets Google (for user authentication), 
+and Google+, Facebook, Twitter, and Instagram for social media sharing via the 
+APIs provided by the companies.
 
 \chapter{System Features}
 $<$This template illustrates organizing the functional requirements for the 
@@ -283,6 +274,69 @@ $<$Define any other requirements not covered elsewhere in the SRS. This might
 include database requirements, internationalization requirements, legal 
 requirements, reuse objectives for the project, and so on. Add any new sections 
 that are pertinent to the project.$>$
+
+\subsection{Naming Conventions}
+\begin{itemize}
+\item All code is to follow standard Java code naming conventions.
+\item Variable names will be in Camel Case, beginning with a lower case letter.\\
+\texttt{int variableName;}
+\item Method names and Class names are to be camel case, beginning with an upper case letter. \\
+\texttt{public class ClassName \{\}}
+\item Member level variables are to be in Camel Case, and begin with a lower case character 'm'. \\
+\texttt{private int mMemberLevelVariable;}
+\end{itemize}
+
+\subsection{Documentation Conventions}
+All files are to contain sufficient documentation to be clearly understandable. This 
+contains but is not limited to
+\begin{itemize}
+\item File comments. Each file should contain a comment at the top which contains,
+\item File name
+\item Author name(s)
+\item Date created
+\item Date(s) modified
+\item brief description of the file contents
+\end{itemize}
+
+\texttt{/** \\}
+\texttt{* @file FileName.java \\}
+\texttt{* @author FirstName LastName\\}
+\texttt{* @date 2016 01 15 \\}
+\texttt{* @date 2016 02 08\\}
+\texttt{* This short description is intended to fulfill the requirements of an SRS. \\}
+\texttt{*/ \\}
+
+\begin{itemize}
+\item Class Comments. All classes should contain a multi-line comment immediately above them which adhires to 
+the javadoc standards. They should contain a description of the Class and its intended function. \\
+\end{itemize}
+
+\texttt{/** \\}
+\texttt{* Class Description used to show the proper documentation \\}
+\texttt{* of a class \\}
+\texttt{*/}
+\texttt{public class ClassName \{\}}
+
+\begin{itemize}
+\item Method Comments. All methods should have a multi-line comment immediately with
+\item Description
+\item Parameter(s)
+\item Return
+\item Exceptions
+\end{itemize}
+
+\texttt{/** \\}
+\texttt{* Method description describing the basic features \\}
+\texttt{* and function of method\\}
+\texttt{* \\}
+\texttt{* @param paramName This parameter is useful because it shows param notation in comments \\}
+\texttt{* @param param2 This shows the second parameter \\}
+\texttt{* \\}
+\texttt{* @return This is the description of the return value\\}
+\texttt{* \\}
+\texttt{*/}
+\texttt{public class ClassName \{\}}
+
 
 \section{Appendix A: Glossary}
 %see https://en.wikibooks.org/wiki/LaTeX/Glossary
