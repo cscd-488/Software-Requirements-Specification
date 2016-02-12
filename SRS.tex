@@ -67,16 +67,19 @@ the "Event!" mobile application and companion web services. It will illustrate t
 and complete declaration for the development of the system.  It will also explain system
 constraints, interface, interactions, and limitations. 
 
+The product being outlined in this System Requirements Document is an event navigator that allows a user to link up to an event to track which event locations that they had gone to. Visiting locations and checking n will allow the user to collect ’badges’ and hopefully, with the support of the local community, be able to 'redeem' them at local establishments
+
 \section{Document Conventions}
 Not applicable at this time
 
 \section{Intended Audience and Reading Suggestions}
-The intdended audience of this document are all those who have a a stakehold in
-the "Event!" application and the developers.
+This document is put together for companies planning to use this product for their events as well as future developers planning to contribute and continue this project.
 
 \section{Project Scope}
 The "Event!" mobile application allows users to track their visitation to events,
 receive digital badges and exchange said badges for real life rewards.
+
+This product allows for users to link into an event or events they are attending to get information on locations to visit while at the event. Eventually, the application would take clients and allow them to push event information to the application's server. It would be the event coordinator to get community rewards for attendance and ’badges’.
 
 \section{References}
 Not applicable at this time
@@ -125,7 +128,7 @@ limitations (timing requirements, memory requirements); interfaces to other
 applications; specific technologies, tools, and databases to be used; parallel 
 operations; language requirements; communications protocols; security 
 considerations; design conventions or programming standards (for example, if the 
-customer’s organization will be responsible for maintaining the delivered 
+customer's organization will be responsible for maintaining the delivered 
 software).$>$
 
 \section{Assumptions and Dependencies}
@@ -155,7 +158,7 @@ Event! will also use network to send and recieve information from a server.
 
 \section{Software Interfaces}
 Event! will use ZXing QR code scanner API for decoding and creating QR codes for 
-event and waypoint checkin. \\
+event and way point check-in. \\
 Event! will use Apache server with PHP and MySQL database for maintaining event 
 information and user information.
 
@@ -194,7 +197,7 @@ the app, it will check for updates to the current events, and the user will be a
 select new events.
 
 \subsection{Stimulus/Response Sequences}
-User will open app. Asyncronist task will run in the background, updating the device's
+User will open app. Asynchronous task will run in the background, updating the device's
 local database with events.
 
 \subsection{Functional Requirements}
@@ -203,12 +206,12 @@ Database back end for pulling event data.
 \section{System Feature 3 : Checkin}
 
 \subsection{Description and Priority}
-User checkin is a core feature of the app. Users will be allowed to check in to event waypoints
+User checkin is a core feature of the app. Users will be allowed to check in to event way points
 by using GPS location and QR code scans.
 
 \subsection{Stimulus/Response Sequences}
-User will select an event and be presented with a list of event waypoints. User will then
-select a single waypoint which they wish to check in to. They will press a button and either
+User will select an event and be presented with a list of event way points. User will then
+select a single way point which they wish to check in to. They will press a button and either
 be checked in via GPS or a Camera will be shown which they can use to scan a QR code. \\
 If GPS is disabled, user will be prompted to allow access. \\
 If Camera is busy, user will be notified.
@@ -220,7 +223,7 @@ Camera and ZXing API for QR code scanning.
 \section{System Feature 4 : Badges}
 One key feature of the app is the collection of badges. These badges, when collected,
 can be used to redeem some item of nominal value from a vendor/booth, such as a 
-cup of coffee, for visiting all waypoints. The app will allow for the viewing of collected 
+cup of coffee, for visiting all way points. The app will allow for the viewing of collected 
 badges, as well as a way of signifying when a badge or set of badges has been redeemed.
 
 \subsection{Stimulus/Response Sequences}
@@ -252,8 +255,8 @@ Administrators will be able to easily add events to the server, and users will s
 and be able to select and pull new events. \\
 Event! uses Android Fragments to make the code modular and easily extensible. 
 This allows new modules to easily be added for increased functionality. \\
-Maintinance should be small, with the only necessary maintinance being in 
-database maintinance, and security updates. \\
+Maintenance should be small, with the only necessary maintenance being in 
+database maintenance, and security updates. \\
 
 \chapter{Other Requirements}
 
@@ -290,7 +293,7 @@ contains but is not limited to
 \texttt{*/ \\}
 
 \begin{itemize}
-\item Class Comments. All classes should contain a multi-line comment immediately above them which adhires to 
+\item Class Comments. All classes should contain a multi-line comment immediately above them which adheres to 
 the javadoc standards. They should contain a description of the Class and its intended function. \\
 \end{itemize}
 
