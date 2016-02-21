@@ -17,7 +17,7 @@
     urlcolor=purple,                                % color of external links
     linktoc=page                                    % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{2.0 }
 \date{}
 %\title{%
 
@@ -32,7 +32,7 @@
         \vspace{1.9cm}
         for\\
         \vspace{1.9cm}
-        Event!\\
+        Magpie\\
         \vspace{1.9cm}
         \LARGE{Version \myversion approved}\\
         \vspace{1.9cm}
@@ -46,16 +46,16 @@
 
 \tableofcontents
 
-
 \chapter*{Revision History}
 
 \begin{center}
     \begin{tabular}{|c|c|c|c|}
         \hline
-	    Name & Date & Reason For Changes & Version\\
+	    Name & Date & Reason For Changes & Version \\
         \hline
-	    Rough Draught & 2016 02 08 & Initial SRS & .01\\
+	    Rough Draft & 2016 02 08 & Initial SRS & 1.0 \\
         \hline
+        Version 2.0 update & 2016 02 21 & Prep for client release & 2.0 \\
     \end{tabular}
 \end{center}
 
@@ -63,23 +63,25 @@
 
 \section{Purpose}
 The purpose of this document is to give a detailed description of requirements for
-the "Event!" mobile application and companion web services. It will illustrate the purpose
+the Magpie mobile application and companion web services. It will illustrate the purpose
 and complete declaration for the development of the system.  It will also explain system
-constraints, interface, interactions, and limitations. 
-
-The product being outlined in this System Requirements Document is an event navigator that allows a user to link up to an event to track which event locations that they had gone to. Visiting locations and checking n will allow the user to collect ’badges’ and hopefully, with the support of the local community, be able to 'redeem' them at local establishments
+constraints, interface, interactions, and limitations.
 
 \section{Document Conventions}
 Not applicable at this time
 
 \section{Intended Audience and Reading Suggestions}
-This document is put together for companies planning to use this product for their events as well as future developers planning to contribute and continue this project.
+This document is intended for all those interested or having stake in the Magpie
+application.  Companies planning to use this product as well as future developers
+planning to contribute or elaborate on this software will find the following documentation
+helpful to understand the specifications and functions of both the mobile application and server application.
 
 \section{Project Scope}
-The "Event!" mobile application allows users to track their visitation to events,
-receive digital badges and exchange said badges for real life rewards.
-
-This product allows for users to link into an event or events they are attending to get information on locations to visit while at the event. Eventually, the application would take clients and allow them to push event information to the application's server. It would be the event coordinator to get community rewards for attendance and ’badges’.
+The Magpie mobile application allows users to track their visitation to events,
+receive digital badges and exchange said badges for real life rewards. Badges are awarded
+to users based on proximity to available events in their area.  Checking in via GPS or
+if applicable by scanning a QR code, will yeild a digital badge that is then stored for them
+in a risilient database on Magpie's servers.
 
 \section{References}
 Not applicable at this time
@@ -87,53 +89,53 @@ Not applicable at this time
 \chapter{Overall Description}
 
 \section{Product Perspective}
-The Event app was first envisioned as a standalone mobile application that one
+The Magpie app was first envisioned as a standalone mobile application that one
 could use to track their progress through a given event and obtain badges for doing so.
 It has since grown into a much bigger and more ambitious, multi-part project. And while the
-fundamentals remain the same, the implementation is turning into a robust, social, and 
+fundamental idea remains the same, the implementation is turning into a robust, social, and
 educational piece of software that has it's roots in game theory.
 
 \section{Product Functions}
-Event! is intended to allow users to find interesting locations, to influence them 
-to visit those locations, to share the experience with friends, and collect badges 
-which they can redeem for some nominal reward. Because of this, we have the 
-following functions: 
+Magpie is intended to allow users to find interesting locations, to influence them
+to visit those locations, to share the experience with friends, and collect badges
+which they can redeem for some nominal reward. Because of this, we have the
+following functions:
 \begin{itemize}
-\item User authentication via OAuth2
+\item User authentication
 \item Robust web service backend
 \item GPS and QR location check in
-\item Social media hooks for sharing events/waypoints
+\item Social media hooks for sharing events and waypoints
 \end{itemize}
-With these features, users will be allowed to log in to the app, view events, 
-view waypoints, share events and waypoints via social media, and collect 
+With these features, users will be allowed to log in to the app, view events,
+view waypoints, share events and waypoints via social media, and collect
 badges at waypoints via GPS and QR.
 
 \section{User Classes and Characteristics}
-Event! really has something for everyone. The game-ification of collecting badges to
+Magpie really has something for everyone. The game-ification of collecting badges to
 exchange for real life rewards will drive the younger generations to use the application.
-Not to mention the social media integrations that will allow the user to quickly share, tweet, and 
+Not to mention the social media integrations that will allow the user to quickly share, tweet, and
 post their latest adventure.
 
 \section{Operating Environment}
-Event! will run on Android API 16 and newer android devices. It is designed for 
-mobile phones, but it can also be run on Android tablets, although the screen 
-sizes are not spesifically supported. The phones/tablets must have a rear facing 
+Magpie will run on Android API 16 and newer android devices. It is designed for
+mobile phones, but it can also be run on Android tablets, although the screen
+sizes are not spesifically supported. The phones/tablets must have a rear facing
 camera to be able to utilize the QR code check in feature.
 
 \section{Design and Implementation Constraints}
-
-$<$Describe any items or issues that will limit the options available to the 
-developers. These might include: corporate or regulatory policies; hardware 
-limitations (timing requirements, memory requirements); interfaces to other 
-applications; specific technologies, tools, and databases to be used; parallel 
-operations; language requirements; communications protocols; security 
-considerations; design conventions or programming standards (for example, if the 
-customer's organization will be responsible for maintaining the delivered 
+%todo
+$<$Describe any items or issues that will limit the options available to the
+developers. These might include: corporate or regulatory policies; hardware
+limitations (timing requirements, memory requirements); interfaces to other
+applications; specific technologies, tools, and databases to be used; parallel
+operations; language requirements; communications protocols; security
+considerations; design conventions or programming standards (for example, if the
+customer's organization will be responsible for maintaining the delivered
 software).$>$
 
 \section{Assumptions and Dependencies}
-The app is dependent on a database back end for pulling events and updating 
-content. Without the back end it will be incapable of pulling event data and 
+Magpie is dependent on a database back end for pulling events and updating
+content. Without the back end it is incapable of pulling event data and
 providing the user with information.
 
 
@@ -152,56 +154,73 @@ The user interface will be built with Android XML layouts. It will feature
 \end{itemize}
 
 \section{Hardware Interfaces}
-Each device must have a rear-facing camera capable of producing JPEG photos, 
-and auto focus. This will be used by the QR code scanner for event waypoint checkin.
-Event! will also use network to send and recieve information from a server.
+Each device must have a rear-facing camera capable of auto-focus,
+and and producting JPEG photos. This will be used by the QR code scanner for event waypoint checkin.
+Magpie will also need network connection to send and recieve user data to it's server.
+The device must also be GPS capable if the user wants to take advantage of the GPS check in and event location fetures.
 
 \section{Software Interfaces}
-Event! will use ZXing QR code scanner API for decoding and creating QR codes for 
-event and way point check-in. \\
-Event! will use Apache server with PHP and MySQL database for maintaining event 
-information and user information.
+Magpie will make use of the following software interfaces
+\begin{itemize}
+  \item Mobile Application
+  \begin{itemize}
+    \item ZXing QR code API
+    \item Google Plus API
+    \item Google Play Services
+    \item hdodenhof's circleimageview library
+    \item koushikdutta's ION library
+  \end{itemize}
+  \item Server Application
+  \begin{itemize}
+    \item FreeBSD 10.2
+    \item NGINX
+    \item MySQL
+    \item PHP 5.7
+  \end{itemize}
+\end{itemize}
 
 \section{Communications Interfaces}
-Event! will communicate with the server via HTTPS connections, for getting event 
+Magpie will communicate with the server via HTTPS connections, for getting event
 data, and storing user data. \\
-Event will also communicate with social media outlets Google (for user authentication), 
-and Google+, Facebook, Twitter, and Instagram for social media sharing via the 
-APIs provided by the companies.
+Magpie will also communicate with social media outlets Google (for user authentication),
+and Google+, Facebook, Twitter, and Instagram for social media sharing via the
+APIs provided.
 
 \chapter{System Features}
-These are the main features included in Event!.
+These are the main features included in Magpie.
 
 \section{System Feature 1 : Intro \& Login}
-Paging intro screen
+Login screen with paginated intro / tutorial
 
 \subsection{Description and Priority}
-Provides a quick tutorial to anyone installing the app on the basic features and 
-usage of the app. This is of low priority, because it is not necessary for the functioning 
-of the app, only the user experience.
+Provides a login as well as a quick tutorial outlining the app's  basic features and
+usage. This is of mixed priority, the login acts as the initial entry point for new users
+which is of high priority, while the paginated tutorial provides a nice feature to user
+experience which is not critical to the application's overall functionality.
 
 \subsection{Stimulus/Response Sequences}
-User will install app and be greeted by a quick tutorial. They can then choose to 
-continue through the tutorial, or skip the tutorial. \\
-After viewing the tutorial the user will be prompted to login with their Google account.
-They will be able to click a single button and authorize the app.
+On initial launch, Magpie will present the user with a professionally designed login
+page providing the user the option for logging in with their Google account. The user
+will also be able to swipe the screen to view a paginated tutorial highlighting the
+usage and main features of the application.
 
 \subsection{Functional Requirements}
-Database back end for storing user login information.
+Server side database backend assisting with login verification.
 
 \section{System Feature 2 : Events}
 
 \subsection{Description and Priority}
-This contains the core functionality of the app, and has a very high priority. Upon opening 
-the app, it will check for updates to the current events, and the user will be able to 
-select new events.
+Here begins the core functionality of the application and is as such high priority.
 
 \subsection{Stimulus/Response Sequences}
-User will open app. Asynchronous task will run in the background, updating the device's
-local database with events.
+Continuing the first run sequence, the application will first prompt the user for their location.
+The user can either enter a location manually or touch the GPS button to enable auto-detection.
+This location will be saved as a setting and stored in app data.
+An asynchronous task will run in the background, updating the device's local list of events and waypoints.
+While this asynchronous task runs, the Magpie loading screen will display to the user.
 
 \subsection{Functional Requirements}
-Database back end for pulling event data.
+Server side database back end for pulling event data.
 
 \section{System Feature 3 : Checkin}
 
@@ -222,23 +241,23 @@ Camera and ZXing API for QR code scanning.
 
 \section{System Feature 4 : Badges}
 One key feature of the app is the collection of badges. These badges, when collected,
-can be used to redeem some item of nominal value from a vendor/booth, such as a 
-cup of coffee, for visiting all way points. The app will allow for the viewing of collected 
+can be used to redeem some item of nominal value from a vendor/booth, such as a
+cup of coffee, for visiting all way points. The app will allow for the viewing of collected
 badges, as well as a way of signifying when a badge or set of badges has been redeemed.
 
 \subsection{Stimulus/Response Sequences}
-User will present phone to vendor. Vendor will be able to scan screen, or otherwise 
+User will present phone to vendor. Vendor will be able to scan screen, or otherwise
 see and redeem collected badges.
 
 \subsection{Functional Requirements}
-Database connection for loading collected badges from. Possible vendor database connection 
+Database connection for loading collected badges from. Possible vendor database connection
 for claiming badges from a user.
 
 
 \chapter{Other Nonfunctional Requirements}
 
 \section{Performance Requirements}
-Internet connection must be suitable for loading images and other content from a 
+Internet connection must be suitable for loading images and other content from a
 database. A simple wifi or 2G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
@@ -250,12 +269,12 @@ Network security is still in research.
 
 \section{Software Quality Attributes}
 The software is built to be extensible. It can be extended to almost any event at
-which there are booths, attractions, or other locations or points of interest. \\ 
+which there are booths, attractions, or other locations or points of interest. \\
 Administrators will be able to easily add events to the server, and users will see
 and be able to select and pull new events. \\
-Event! uses Android Fragments to make the code modular and easily extensible. 
+Magpie uses Android Fragments to make the code modular and easily extensible.
 This allows new modules to easily be added for increased functionality. \\
-Maintenance should be small, with the only necessary maintenance being in 
+Maintenance should be small, with the only necessary maintenance being in
 database maintenance, and security updates. \\
 
 \chapter{Other Requirements}
@@ -264,7 +283,7 @@ database maintenance, and security updates. \\
 \subsection{Naming Conventions}
 \begin{itemize}
 \item All code is to follow standard Java code naming conventions.
-\item Variable names will be in Camel Case, beginning with a lower case letter.\\
+\item Variable names will be in Camel Case, beginning with a lower case letter.
 \texttt{int variableName;}
 \item Method names and Class names are to be camel case, beginning with an upper case letter. \\
 \texttt{public class ClassName \{\}}
@@ -273,7 +292,7 @@ database maintenance, and security updates. \\
 \end{itemize}
 
 \subsection{Documentation Conventions}
-All files are to contain sufficient documentation to be clearly understandable. This 
+All files are to contain sufficient documentation to be clearly understandable. This
 contains but is not limited to
 \begin{itemize}
 \item File comments. Each file should contain a comment at the top which contains,
@@ -293,7 +312,7 @@ contains but is not limited to
 \texttt{*/ \\}
 
 \begin{itemize}
-\item Class Comments. All classes should contain a multi-line comment immediately above them which adheres to 
+\item Class Comments. All classes should contain a multi-line comment immediately above them which adheres to
 the javadoc standards. They should contain a description of the Class and its intended function. \\
 \end{itemize}
 
