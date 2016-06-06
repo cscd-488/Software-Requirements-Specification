@@ -17,7 +17,7 @@
     urlcolor=purple,                                % color of external links
     linktoc=page                                    % only page is linked
 }%
-\def\myversion{2.0 }
+\def\myversion{2.2 }
 \date{}
 %\title{%
 
@@ -34,7 +34,7 @@
         \vspace{1.9cm}
         Magpie\\
         \vspace{1.9cm}
-        \LARGE{Version \myversion approved}\\
+        \LARGE{Version \myversion}\\
         \vspace{1.9cm}
         Prepared by Joshua D. Harshman\\Bruce Emehiser\\Aaron Young\\Andrew Macy\\
         \vspace{1.9cm}
@@ -56,6 +56,9 @@
 	    Rough Draft & 2016 02 08 & Initial SRS & 1.0 \\
         \hline
         Version 2.0 update & 2016 02 21 & Prep for client release & 2.0 \\
+        \hline
+        Version 2.2 update & 2016 06 05 & Modification for Alpha release & 2.2 \\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -68,7 +71,8 @@ and complete declaration for the development of the system.  It will also explai
 constraints, interface, interactions, and limitations.
 
 \section{Document Conventions}
-Not applicable at this time
+Not applicable at this time \\ \\
+See 6.0.1 and 6.0.2 for for Coding Conventions
 
 \section{Intended Audience and Reading Suggestions}
 This document is intended for all those interested or having stake in the Magpie
@@ -119,7 +123,7 @@ post their latest adventure.
 \section{Operating Environment}
 Magpie will run on Android API 16 and newer android devices. It is designed for
 mobile phones, but it can also be run on Android tablets, although the screen
-sizes are not spesifically supported. The phones/tablets must have a rear facing
+sizes are not specifically supported. The phones/tablets must have a rear facing
 camera to be able to utilize the QR code check in feature.
 
 \section{Design and Implementation Constraints}
@@ -138,18 +142,18 @@ providing the user with information.
 The user interface will be built with Android XML layouts. It will feature
 \begin{itemize}
 \item Paging introduction view
-\item Navigation drawer
+\item Share image drawer
 \item Login screen
 \item Event view screen
-\item Waypoint view screen
+\item Way-point view screen
 \item QR code scanner screen
 \end{itemize}
 
 \section{Hardware Interfaces}
 Each device must have a rear-facing camera capable of auto-focus,
-and and producting JPEG photos. This will be used by the QR code scanner for event waypoint checkin.
-Magpie will also need network connection to send and recieve user data to it's server.
-The device must also be GPS capable if the user wants to take advantage of the GPS check in and event location fetures.
+and and producing JPEG photos. This will be used by the QR code scanner for event waypoint checkin.
+Magpie will also need network connection to send and receive user data to it's server.
+The device must also be GPS capable if the user wants to take advantage of the GPS check in and event location features.
 
 \section{Software Interfaces}
 Magpie will make use of the following software interfaces
@@ -217,8 +221,7 @@ Server side database back end for pulling event data.
 \section{System Feature 3 : Checkin}
 
 \subsection{Description and Priority}
-User checkin is a core feature of the app. Users will be allowed to check in to event way points
-by using GPS location and QR code scans.
+User checkin is a core feature of the app. Users will be allowed to check in to event way points by using GPS location and QR code scans.
 
 \subsection{Stimulus/Response Sequences}
 User will select an event and be presented with a list of event way points. User will then
@@ -228,7 +231,8 @@ If GPS is disabled, user will be prompted to allow access. \\
 If Camera is busy, user will be notified.
 
 \subsection{Functional Requirements}
-GPS connectivity \\
+GPS connectivity - For full functionality\\
+Internet connection \\
 Camera and ZXing API for QR code scanning.
 
 \section{System Feature 4 : Badges}
