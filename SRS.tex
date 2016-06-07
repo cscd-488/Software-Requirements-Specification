@@ -131,9 +131,14 @@ It is up to the end user to develop and maintain a database and server for the a
 as well as maintain a way to push events to the Magpie server.
 
 \section{Assumptions and Dependencies}
-Magpie is dependent on a database back end for pulling events and updating
-content. Without the back end it is incapable of pulling event data and
-providing the user with information.
+While Magpie is dependant on location services for core functionality,
+it is also dependant on a hosted web service and database and requires connectivity to
+this service in order to function correctly. \\ \\
+While Magpie is currently not offically deployed to a production environment, a testing server is
+currently live which the application will use by default.
+% Magpie is dependent on a hosted database for pulling events and updating
+% content. Without the back end it is incapable of pulling event data and
+% providing the user with information.
 
 \chapter{External Interface Requirements}
 
@@ -238,10 +243,10 @@ Internet connection \\
 Camera and ZXing API for QR code scanning.
 
 \section{System Feature 4 : Sharing}
-The user will be able to easily share information and pictures regarding specific check-in locations at any event. Sharing will be  direct through Facebook, Twitter and Google+ while also allowing photo sharing through any capable app on the device. The user will be able to choose to take a photo, pick one from their gallery or use the photo loaded on default. 
+The user will be able to easily share information and pictures regarding specific check-in locations at any event. Sharing will be  direct through Facebook, Twitter and Google+ while also allowing photo sharing through any capable app on the device. The user will be able to choose to take a photo, pick one from their gallery or use the photo loaded on default.
 
 \subsection{Stimulus/Response Sequences}
-On the the screen for an individual checkpoint, there will be a share button. When pressed a list will pop out from the top-left corner prompting for share method. An additional list will replace the existing one if the user selects the "Share Photo" option prompting for which method they prefer.
+On the screen for an individual checkpoint, there will be a share button. When pressed a list will pop out from the top-left corner prompting for share method. An additional list will replace the existing one if the user selects the "Share Photo" option prompting for which method they prefer.
 
 \subsection{Functional Requirements}
 User accounts on desired social media accounts.
@@ -261,13 +266,12 @@ Security is still in research.
 
 \section{Software Quality Attributes}
 The software is built to be extensible. It can be extended to almost any event at
-which there are booths, attractions, or other locations or points of interest. \\
+which there are booths, attractions, or other locations or points of interest.
 Administrators will be able to easily add events to the server, and users will see
-and be able to select and pull new events. \\
-Magpie uses Android Fragments to make the code modular and easily extensible.
-This allows new modules to easily be added for increased functionality. \\
-Maintenance should be small, with the only necessary maintenance being in
-database maintenance, and security updates. \\
+and be able to select and pull new events.
+Magpie leverages fragments to make each feature modular and easily extensible.
+This allows new modules to easily be added for increased functionality.
+Maintenance should be small, with the only necessary maintenance being server side.
 
 \subsection{Naming Conventions}
 \begin{itemize}
