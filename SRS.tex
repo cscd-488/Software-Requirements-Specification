@@ -29,14 +29,12 @@
     \rule{16cm}{5pt}\vskip1cm
     \begin{bfseries}
         \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
-        \vspace{1.9cm}
-        for\\
-        \vspace{1.9cm}
-        Magpie\\
-        \vspace{1.9cm}
+        \vspace{1.0cm}
+        for Magpie \\
+        \vspace{1cm}
         \LARGE{Version \myversion}\\
-        \vspace{1.9cm}
-        Prepared by Joshua D. Harshman\\Bruce Emehiser\\Aaron Young\\Andrew Macy\\
+        \vspace{1.5cm}
+        Prepared by\\Joshua D. Harshman\\Bruce Emehiser\\Aaron Young\\Andrew Macy\\
         \vspace{1.9cm}
         Application Development Team\\
         \vspace{1.9cm}
@@ -58,6 +56,8 @@
         Version 2.0 update & 2016 02 21 & Prep for client release & 2.0 \\
         \hline
         Version 2.2 update & 2016 06 05 & Modification for Alpha release & 2.2 \\
+        \hline
+        Version 2.3 update & 2016 06 06 & Modification for Alpha release & 2.3 \\
         \hline
     \end{tabular}
 \end{center}
@@ -126,13 +126,14 @@ sizes are not specifically supported. The phones/tablets must have a rear facing
 camera to be able to utilize the QR code check in feature.
 
 \section{Design and Implementation Constraints}
-A minimum Android version of 4.3 (Jelly Bean) is required to access *all* features of the Magpie application. It is up to the end user to develop and maintain a database and server for the application to interface with as well as maintain a way to push events to the Magpie server.
+A minimum Android version of 4.3 (Jelly Bean) is required to access *all* features of the Magpie application.
+It is up to the end user to develop and maintain a database and server for the application to interface with
+as well as maintain a way to push events to the Magpie server.
 
 \section{Assumptions and Dependencies}
 Magpie is dependent on a database back end for pulling events and updating
 content. Without the back end it is incapable of pulling event data and
 providing the user with information.
-
 
 \chapter{External Interface Requirements}
 
@@ -162,15 +163,20 @@ Magpie will make use of the following software interfaces
     \item ZXing QR code API
     \item Google Plus API
     \item Google Play Services
+    \item Google Gson
     \item hdodenhof's circleimageview library
-    \item koushikdutta's ION library
+    \item Square's okhttp3 library
+    \item Square's picasso library
+    \item Facebook Android SDK
+    \item Fabric I/O
   \end{itemize}
   \item Server Application
   \begin{itemize}
-    \item FreeBSD 10.2
-    \item NGINX
+    \item CoreOS Stable
+    \item Docker
+    \item Apache
+    \item PHP
     \item MySQL
-    \item PHP 5.7
   \end{itemize}
 \end{itemize}
 
@@ -178,8 +184,7 @@ Magpie will make use of the following software interfaces
 Magpie will communicate with the server via HTTPS connections, for getting event
 data, and storing user data. \\
 Magpie will also communicate with social media outlets Google (for user authentication),
-and Google+, Facebook, Twitter, and Instagram for social media sharing via the
-APIs provided.
+and Google+, Facebook, and Twitter for sharing.
 
 \chapter{System Features}
 These are the main features included in Magpie.
@@ -200,7 +205,7 @@ will also be able to swipe the screen to view a paginated tutorial highlighting 
 usage and main features of the application.
 
 \subsection{Functional Requirements}
-Server side database backend assisting with login verification.
+Server side database backend assisting with login verification, user, and data tracking.
 
 \section{System Feature 2 : Events}
 
@@ -208,26 +213,24 @@ Server side database backend assisting with login verification.
 Here begins the core functionality of the application and is as such high priority.
 
 \subsection{Stimulus/Response Sequences}
-Continuing the first run sequence, the application will first prompt the user for their location.
-The user can either enter a location manually or touch the GPS button to enable auto-detection.
-This location will be saved as a setting and stored in app data.
-An asynchronous task will run in the background, updating the device's local list of events and waypoints.
-While this asynchronous task runs, the Magpie loading screen will display to the user.
+Continuing the first run sequence, the application will use GPS location services to detect the user's current location.
+This location will be stored in SQLite and sent to the server along with the selected radius settings.
+These values are then used on the server to caclulate and return the list of known events within the user's prefered radius.
 
 \subsection{Functional Requirements}
-Server side database back end for pulling event data.
+Server side database and services for pulling event data.
 
 \section{System Feature 3 : Checkin}
 
 \subsection{Description and Priority}
-User checkin is a core feature of the app. Users will be allowed to check in to event way points by using GPS location and QR code scans.
+User checkin is a core feature of the app.
+Users will be allowed to check into an event's waypoints by using GPS location services and QR code scans.
 
 \subsection{Stimulus/Response Sequences}
-User will select an event and be presented with a list of event way points. User will then
-select a single way point which they wish to check in to. They will press a button and either
-be checked in via GPS or a Camera will be shown which they can use to scan a QR code. \\
-If GPS is disabled, user will be prompted to allow access. \\
-If Camera is busy, user will be notified.
+The user will select an event and be presented with a list of waypoints associated with that event.
+The user will then be able to select a single waypoint which they wish to check in to.
+Being able to check-in to that waypoint is dependant on verified location provided via location services or by QR code
+if available. \\
 
 \subsection{Functional Requirements}
 GPS connectivity - For full functionality\\
@@ -235,19 +238,16 @@ Internet connection \\
 Camera and ZXing API for QR code scanning.
 
 \section{System Feature 4 : Badges}
-One key feature of the app is the collection of badges. These badges, when collected,
-can be used to redeem some item of nominal value from a vendor/booth, such as a
-cup of coffee, for visiting all way points. The app will allow for the viewing of collected
-badges, as well as a way of signifying when a badge or set of badges has been redeemed.
+One key feature of the app is the collection of badges.
+This feature is still under heavy development and therefore will not be touched on in depth.
 
-\subsection{Stimulus/Response Sequences}
-User will present phone to vendor. Vendor will be able to scan screen, or otherwise
-see and redeem collected badges.
-
-\subsection{Functional Requirements}
-Database connection for loading collected badges from. Possible vendor database connection
-for claiming badges from a user.
-
+% \subsection{Stimulus/Response Sequences}
+% User will present phone to vendor. Vendor will be able to scan screen, or otherwise
+% see and redeem collected badges.
+%
+% \subsection{Functional Requirements}
+% Database connection for loading collected badges from. Possible vendor database connection
+% for claiming badges from a user.
 
 \chapter{Other Nonfunctional Requirements}
 
@@ -257,10 +257,10 @@ database. A simple wifi or 2G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
 \section{Safety Requirements}
-Setting up user data handling is still in research.
+Best practices of user data handling is still in research.
 
 \section{Security Requirements}
-Network security is still in research.
+Security is still in research.
 
 \section{Software Quality Attributes}
 The software is built to be extensible. It can be extended to almost any event at
@@ -271,9 +271,6 @@ Magpie uses Android Fragments to make the code modular and easily extensible.
 This allows new modules to easily be added for increased functionality. \\
 Maintenance should be small, with the only necessary maintenance being in
 database maintenance, and security updates. \\
-
-\chapter{Other Requirements}
-
 
 \subsection{Naming Conventions}
 \begin{itemize}
