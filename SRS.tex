@@ -142,7 +142,7 @@ providing the user with information.
 The user interface will be built with Android XML layouts. It will feature
 \begin{itemize}
 \item Paging introduction view
-\item Share image drawer
+\item Share drawer
 \item Login screen
 \item Event view screen
 \item Way-point view screen
@@ -237,23 +237,18 @@ GPS connectivity - For full functionality\\
 Internet connection \\
 Camera and ZXing API for QR code scanning.
 
-\section{System Feature 4 : Badges}
-One key feature of the app is the collection of badges.
-This feature is still under heavy development and therefore will not be touched on in depth.
-
-% \subsection{Stimulus/Response Sequences}
-% User will present phone to vendor. Vendor will be able to scan screen, or otherwise
-% see and redeem collected badges.
-%
-% \subsection{Functional Requirements}
-% Database connection for loading collected badges from. Possible vendor database connection
-% for claiming badges from a user.
+\section{System Feature 4 : Sharing}
+The user will be able to easily share information and pictures regarding specific check-in locations at any event. Sharing will be  direct through Facebook, Twitter and Google+ while also allowing photo sharing through any capable app on the device. The user will be able to choose to take a photo, pick one from their gallery or use the photo loaded on default. 
+\subsection{Stimulus/Response Sequences}
+On the the screen for an individual checkpoint, there will be a share button. When pressed a list will pop out from the top-left corner prompting for share method. An additional list will replace the existing one if the user selects the "Share Photo" option prompting for which method they prefer.
+\subsection{Functional Requirements}
+User accounts on desired social media accounts.
 
 \chapter{Other Nonfunctional Requirements}
 
 \section{Performance Requirements}
 Internet connection must be suitable for loading images and other content from a
-database. A simple wifi or 2G connection should be sufficient. \\
+database. A simple wifi or 3G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
 \section{Safety Requirements}
