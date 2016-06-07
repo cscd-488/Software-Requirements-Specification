@@ -141,7 +141,7 @@ providing the user with information.
 The user interface will be built with Android XML layouts. It will feature
 \begin{itemize}
 \item Paging introduction view
-\item Share image drawer
+\item Share drawer
 \item Login screen
 \item Event view screen
 \item Way-point view screen
@@ -164,6 +164,8 @@ Magpie will make use of the following software interfaces
     \item Google Play Services
     \item hdodenhof's circleimageview library
     \item koushikdutta's ION library
+    \item Facebook Android library
+    \item Fabric.io library (Twitter)
   \end{itemize}
   \item Server Application
   \begin{itemize}
@@ -248,12 +250,18 @@ see and redeem collected badges.
 Database connection for loading collected badges from. Possible vendor database connection
 for claiming badges from a user.
 
+\section{System Feature 5 : Sharing}
+The user will be able to easily share information and pictures regarding specific check-in locations at any event. Sharing will be  direct through Facebook, Twitter and Google+ while also allowing photo sharing through any capable app on the device. The user will be able to choose to take a photo, pick one from their gallery or use the photo loaded on default. 
+\subsection{Stimulus/Response Sequences}
+On the the screen for an individual checkpoint, there will be a share button. When pressed a list will pop out from the top-left corner prompting for share method. An additional list will replace the existing one if the user selects the "Share Photo" option prompting for which method they prefer.
+\subsection{Functional Requirements}
+User accounts on desired social media accounts.
 
 \chapter{Other Nonfunctional Requirements}
 
 \section{Performance Requirements}
 Internet connection must be suitable for loading images and other content from a
-database. A simple wifi or 2G connection should be sufficient. \\
+database. A simple wifi or 3G connection should be sufficient. \\
 Phone must be powerful enough to decode QR codes from images.
 
 \section{Safety Requirements}
